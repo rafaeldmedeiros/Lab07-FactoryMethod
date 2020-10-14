@@ -24,6 +24,8 @@ public class SanduicheFactory {
 	}
 	
 	public static void montarSanduiche() {
+		if(sanduiche==null)
+			return;
 		ingredientes.clear();
 		ingredientes.add(sanduiche.adicionarPao().getString());
 		ingredientes.add(sanduiche.adicionarQueijo().getString());
@@ -33,6 +35,8 @@ public class SanduicheFactory {
 	}
 	
 	public static String getString() {
+		if(sanduiche == null)
+			return "Sanduíche não foi selecionado!";
 		StringBuilder string = new StringBuilder(sanduiche.toString());
 		string.append("\nLista de Ingredientes:\n");
 		for(int i = 0; i < ingredientes.size(); i++) {

@@ -2,10 +2,24 @@ package testes;
 
 import static org.junit.Assert.*;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
 import factory.SanduicheFactory;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestSanduicheFactory {
+	
+
+	//DEVE VIR PRIMEIRO!!
+	@Test
+	public void first_testSanduicheSemSelecionar() {
+		SanduicheFactory.montarSanduiche();
+		assertEquals(
+				SanduicheFactory.getString(),
+				"Sanduíche não foi selecionado!");
+	}
 	
 	@Test
 	public void testSanduicheSimples() {
@@ -42,4 +56,20 @@ public class TestSanduicheFactory {
 				SanduicheFactory.getString(),
 				"Sanduíche de Presunto de Peru e Queijo Mussarela\nLista de Ingredientes:\nPão francês\nQueijo mussarela\nPresunto de peito de peru\nOvo de Capoeira\nTomate\n");
 	}
+
+	@Test
+	public void testSanduicheIndeciso() {
+		SanduicheFactory.criarSanduicheSimples();
+		SanduicheFactory.montarSanduiche();
+		
+		SanduicheFactory.criarSanduicheFrangoCheddar();
+		
+		SanduicheFactory.criarSanduichePeruMussarela();
+		SanduicheFactory.montarSanduiche();
+		
+		assertEquals(
+				SanduicheFactory.getString(),
+				"Sanduíche de Presunto de Peru e Queijo Mussarela\nLista de Ingredientes:\nPão francês\nQueijo mussarela\nPresunto de peito de peru\nOvo de Capoeira\nTomate\n");
+	}
+	
 }
