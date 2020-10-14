@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author rafael
- *
- */
-module factory {
-}
